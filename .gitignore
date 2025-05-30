@@ -1,6 +1,8 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
-livros-api
+expo
+assets
+frontend
 # dependencies
 node_modules/
 
