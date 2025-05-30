@@ -5,27 +5,33 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import AddBookScreen from './screens/AddBookScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
+import BookDetailsScreen from './screens/BookDetailsScreen';
 import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// Stack para permitir navegação dentro da aba "Livros"
+
 function HomeStack() {
   return (
     <Stack.Navigator>
-      {/* ✅ Nome alterado de "Livros" para "Lista de Livros" para evitar conflito */}
+      { }
       <Stack.Screen
         name="Lista de Livros"
         component={HomeScreen}
-        options={{ title: 'Livros' }} // Título exibido no topo
+        options={{ title: 'Bibliotecando' }} 
       />
       <Stack.Screen
         name="Adicionar Livro"
         component={AddBookScreen}
         options={{ title: 'Adicionar Livro' }}
       />
+
+      <Stack.Screen name="BookDetails" component={BookDetailsScreen} options={{ title: 'Detalhes do Livro' }} />
+
     </Stack.Navigator>
+
+    
   );
 }
 

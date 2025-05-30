@@ -32,7 +32,6 @@ export default function HomeScreen({ navigation }) {
 
   const handleSearch = async () => {
     if (!searchText.trim()) {
-      // Se o campo estiver vazio, busca todos os livros
       fetchBooks();
       return;
     }
@@ -58,7 +57,6 @@ export default function HomeScreen({ navigation }) {
     }
   };
 
-  // Sempre que apagar todo o texto, busca todos os livros automaticamente
   useEffect(() => {
     if (searchText === '') {
       fetchBooks();
@@ -104,7 +102,10 @@ export default function HomeScreen({ navigation }) {
         keyExtractor={(item) => item._id}
         ListEmptyComponent={<Text style={styles.empty}>Nenhum livro cadastrado.</Text>}
         renderItem={({ item }) => (
-          <View style={styles.item}>
+          <TouchableOpacity
+            style={styles.item}
+            onPress={() => navigation.navigate('BookDetails', { bookId: item._id })}
+          >
             {item.image && <Image source={{ uri: item.image }} style={styles.image} />}
             <View style={styles.textContainer}>
               <Text style={styles.title}>{item.title}</Text>
@@ -114,7 +115,7 @@ export default function HomeScreen({ navigation }) {
             <TouchableOpacity onPress={() => toggleFavorite(item._id)}>
               <Text style={{ fontSize: 24 }}>{item.favorite ? '❤️' : '🤍'}</Text>
             </TouchableOpacity>
-          </View>
+          </TouchableOpacity>
         )}
       />
     </View>
