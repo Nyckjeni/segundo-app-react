@@ -1,7 +1,9 @@
 const Livro = require('../models/Livro');
 
 exports.getLivros = async (req, res) => {
-  const livros = await Livro.find().sort({ createdAt: -1 });
+  const search = req.query.search || '';
+  const regex = new RegExp(search, 'i'); // 'i' = case insensitive
+  const livros = await Livro.find({ title: regex }).sort({ createdAt: -1 });
   res.json(livros);
 };
 
@@ -25,5 +27,14 @@ exports.favoritarLivro = async (req, res) => {
     res.json(livro);
   } catch (error) {
     res.status(400).json({ erro: 'Erro ao favoritar livro.' });
+  }
+};
+
+exports.getLivrosFavoritos = async (req, res) => {
+  try {
+    const favoritos = await Livro.find({ favorite: true }).sort({ createdAt: -1 });
+    res.json(favoritos);
+  } catch (error) {
+    res.status(500).json({ erro: 'Erro ao buscar livros favoritos.' });
   }
 };
