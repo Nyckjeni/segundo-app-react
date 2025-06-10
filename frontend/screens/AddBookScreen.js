@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, Image, StyleSheet, Alert, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
-const API_URL = 'http://192.168.15.12:3000/api/livros'; // Troque pela URL real quando usar em dispositivo físico
+const API_URL = 'http://192.168.0.125:3000/api/livros'; // Troque pela URL real quando usar em dispositivo físico
 
 export default function AddBookScreen({ navigation }) {
   const [title, setTitle] = useState('');

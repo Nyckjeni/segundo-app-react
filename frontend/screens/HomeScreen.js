@@ -10,7 +10,7 @@ import {
   TextInput,
 } from 'react-native';
 
-const API_URL = 'http://192.168.15.12:3000/api/livros';
+const API_URL = 'http://192.168.0.125:3000/api/livros';
 
 export default function HomeScreen({ navigation }) {
   const [books, setBooks] = useState([]);
